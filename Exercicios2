@@ -1,0 +1,110 @@
+#include <stdio.h>
+
+void imprimirVetor(int vetor[], int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
+}
+
+void imprimirVetorChar(char vetor[], int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        printf("%c ", vetor[i]);
+    }
+    printf("\n");
+}
+
+int ehConsoante(char c) {
+    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+        switch (c) {
+            case 'a': case 'e': case 'i': case 'o': case 'u':
+            case 'A': case 'E': case 'I': case 'O': case 'U':
+                return 0; // Não é consoante
+            default:
+                return 1; // É consoante
+        }
+    } else {
+        return 0; // Não é uma letra
+    }
+}
+
+int main() {
+    // Exercício 1
+    printf("Exercício 1:\n");
+    int vetor1[5];
+
+    printf("Digite 5 números:\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &vetor1[i]);
+    }
+
+    printf("Vetor digitado: ");
+    imprimirVetor(vetor1, 5);
+
+    // Exercício 2
+    printf("\nExercício 2:\n");
+    printf("Vetor na ordem inversa: ");
+    for (int i = 4; i >= 0; i--) {
+        printf("%d ", vetor1[i]);
+    }
+    printf("\n");
+
+    // Exercício 3
+    printf("\nExercício 3:\n");
+    float notas[4];
+    float soma = 0;
+
+    printf("Digite as 4 notas:\n");
+    for (int i = 0; i < 4; i++) {
+        scanf("%f", &notas[i]);
+        soma += notas[i];
+    }
+
+    printf("Notas digitadas: ");
+    imprimirVetor(notas, 4);
+    printf("Média das notas: %.2f\n", soma / 4);
+
+    // Exercício 4
+    printf("\nExercício 4:\n");
+    char vetor4[10];
+    int consoantes = 0;
+
+    printf("Digite 10 caracteres:\n");
+    for (int i = 0; i < 10; i++) {
+        scanf(" %c", &vetor4[i]);
+        if (ehConsoante(vetor4[i])) {
+            consoantes++;
+        }
+    }
+
+    printf("Vetor digitado: ");
+    imprimirVetorChar(vetor4, 10);
+    printf("Número de consoantes: %d\n", consoantes);
+
+    // Exercício 5
+    printf("\nExercício 5:\n");
+    int vetor5[5];
+    int pares[5], impares[5];
+    int countPares = 0, countImpares = 0;
+
+    printf("Digite 5 números inteiros:\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &vetor5[i]);
+        if (vetor5[i] % 2 == 0) {
+            pares[countPares] = vetor5[i];
+            countPares++;
+        } else {
+            impares[countImpares] = vetor5[i];
+            countImpares++;
+        }
+    }
+
+    printf("Vetor digitado: ");
+    imprimirVetor(vetor5, 5);
+    printf("Vetor de pares: ");
+    imprimirVetor(pares, countPares);
+    printf("Vetor de ímpares: ");
+    imprimirVetor(impares, countImpares);
+
+    return 0;
+}
